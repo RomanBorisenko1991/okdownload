@@ -61,9 +61,6 @@ public class BlockInfo {
     }
 
     public long getRangeRight() {
-        if (contentLength == CHUNKED_CONTENT_LENGTH) {
-            return CHUNKED_CONTENT_LENGTH;
-        }
         return startOffset + contentLength - 1;
     }
 
