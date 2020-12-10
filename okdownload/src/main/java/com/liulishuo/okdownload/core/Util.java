@@ -394,9 +394,11 @@ public class Util {
         final Cursor cursor = resolver.query(contentUri, null, null, null, null);
         if (cursor != null) {
             try {
-                cursor.moveToFirst();
-                return cursor
-                        .getLong(cursor.getColumnIndex(OpenableColumns.SIZE));
+                if (cursor.moveToFirst()) {
+                    return cursor.getLong(cursor.getColumnIndex(OpenableColumns.SIZE));
+                }
+
+                return 0;
             } finally {
                 cursor.close();
             }
